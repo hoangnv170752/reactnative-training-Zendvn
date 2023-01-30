@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { View, Text, TouchableOpacity , StatusBar, Image} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-
-import { IMAGES } from '../../contains'
-import { IconStyle , InputStyle } from '../../components'
+import { IconStyle, InputStyle, Progress, ChangePassForm } from '../../components'
 import styles from './styles'
 import { AuthContext } from '../../navigation/AuthProvider'
-import ChangePassForm from '../../components/changePass'
+import {imgPicker} from '../../lib'
+
 const InfoScreen = () => {
     const { logout, user, updateInfo } =  useContext(AuthContext)
+    const { displayName, email, photoURL } = user
     const [nickname, setNickname] = useState(displayName)
     const [visible, setVisible] = useState(false)
     const [photo, setPhoto] = useState(photoURL)
@@ -23,19 +23,23 @@ const InfoScreen = () => {
         setVisible(true)
     }
     const onUpdateImg = () => {
+        imgPicker(
+            (img) => setPhoto(img),
+            (loading) => setLoading(loading)
+        )
     }
-    const { displayName, email, photoURL } = user
     return (
         <>
-        <StatusBar hidden = {true} />
-        <View style={styles.container}>
-            <ChangePassForm visible={visible} setVisible={(value) => setVisible(value)} />
+            <StatusBar hidden = {true} />
+            <View style={styles.container}>
+                <ChangePassForm visible={visible} setVisible={(value) => setVisible(value)} />
                 <View style={styles.info}>
                     <View style={styles.infoBox}>
-                        <Image style={styles.infoBoxImg} source={IMAGES.imgDefault} />
+                        <Image style={styles.infoBoxImg} source={{ uri: photo }} />
                         <TouchableOpacity style={styles.iconAvatar}>
-                            <IconStyle name={'edit'} />
+                            <IconStyle name={'edit'} onPress={onUpdateImg} />
                         </TouchableOpacity>
+                        <Progress visible={(loading == 0 || loading == 1) ? false : true} loading={loading} />
                     </View>
                     <Text style={styles.infoName}>{displayName}</Text>
                     <TouchableOpacity onPress={onUpdateInfo} style={styles.infoTitle}>
@@ -50,7 +54,7 @@ const InfoScreen = () => {
                     style={styles.body}
                 >
                     <View style={styles.formInput}>
-                       <InputStyle name={'Nickname'} value={nickname} onChange={(value) => setNickname(value)}/>
+                        <InputStyle name={'Nickname'} value={nickname} onChange={(value) => setNickname(value)}/>
                     </View>
                     <View style={styles.formInput}>
                         <InputStyle name={'Email'}  editable={false} value={email}/>
@@ -62,7 +66,7 @@ const InfoScreen = () => {
                         </TouchableOpacity>
                     </View>
                 </KeyboardAwareScrollView>
-        </View>
+            </View>
         </>
     )
 }
