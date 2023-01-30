@@ -1,0 +1,38 @@
+import { StyleSheet, Dimensions } from "react-native";
+import colors from "../../../constants/colors";
+const { width, height } = Dimensions.get('window');
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },  
+    image: {
+        width: '100%',
+        flex: 1,
+    },
+    content: {
+        padding: 46,
+    },
+    title: {
+        color: colors.black,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 22
+    },
+    subtitle: {
+        color: colors.grey,
+        textAlign: 'center',
+        fontSize: 15, 
+        marginVertical: 16
+    },
+    footer: {
+        position: 'absolute',
+        bottom: 0,
+        height: 60,
+        width: '100%',
+        backgroundColor: colors.white,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30
+    }
+})
+
+export default styles;
