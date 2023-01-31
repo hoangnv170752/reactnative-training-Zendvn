@@ -16,7 +16,7 @@ const Onboarding = ({navigation}) => {
             </View>
             <View style={styles.content}>
                 <Text style={styles.title}>
-                    Best task management app
+                    Best task management app for Jade & Tyrub
                 </Text>
                 <Text style={styles.subtitle}>
                     Get organized by sorting out all your tasks and boost your productivity.

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         color: colors.black,
         textAlign: 'center',
         fontWeight: 'bold',
-        fontSize: 22
+        fontSize: 21
     },
     subtitle: {
         color: colors.grey,
