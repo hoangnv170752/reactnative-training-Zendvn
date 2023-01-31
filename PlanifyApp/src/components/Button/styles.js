@@ -14,8 +14,11 @@ const styles = StyleSheet.create({
     text: {
         color: colors.white,
         fontSize: 16,
-        fontWeight: '500'
+        fontWeight: 'bold'
     },
+    blueBg: {
+        backgroundColor: colors.blue,
+    }
 });
 
 export default styles;
