@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import React ,{useState} from "react";
 import { View, Image, Text, SafeAreaView, Linking, Alert, ScrollView } from "react-native";
 import styles from "./styles";
@@ -25,6 +27,9 @@ const Signup = ({navigation}) => {
             Alert.alert("Please agree to my rules btch");
             return;
         }
+        if (!values.first_name || !values.last_name) {
+            Alert.alert("Please enter your name");
+        }
         auth()
             .createUserWithEmailAndPassword(
                 values.email, 
@@ -32,6 +37,7 @@ const Signup = ({navigation}) => {
             )
             .then(() => {
                 Alert.alert('User signed up!');
+                auth().currentUser.updateProfile({displayName: `${values.first_name} ${values.last_name}`});
             })
             .catch(error => {
                 if (error.code === 'auth/operation-not-allowed') {
