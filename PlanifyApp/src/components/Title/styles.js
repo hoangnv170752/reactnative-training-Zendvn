@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import {StyleSheet} from 'react-native';
 import colors from '../../constants/colors';
 
@@ -7,7 +9,14 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         paddingVertical: 24,
-    }
+    },
+    thin: {
+        fontSize: 24,
+        fontWeight:'400',
+        color: colors.purple,
+        marginHorizontal: 24,
+
+    },
 });
 
 export default styles;
