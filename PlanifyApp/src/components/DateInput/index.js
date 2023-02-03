@@ -8,12 +8,11 @@ import { TouchableOpacity } from "react-native";
 import DatePicker from "react-native-date-picker";
 import moment from "moment";
 
-const DateInput = ({value, ...props}) => {
+const DateInput = ({value, onChange,  ...props}) => {
     const onDateOpen = () => {
         setOpen(true);
     };
-    const [date, setDate] = useState(new Date())
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
     return (
         <>
             <TouchableOpacity onPress={onDateOpen} style={styles.outlined}>
@@ -29,13 +28,15 @@ const DateInput = ({value, ...props}) => {
                 modal
                 mode="date"
                 open={open}
-                date={date}
-                onConfirm={(date) => {
-                    setOpen(false)
-                    setDate(date)
-                }}
+                date={value}
+                onConfirm={
+                    date => {
+                        setOpen(false)
+                        onChange(date)
+                    }
+                }
                 onCancel={() => {
-                setOpen(false)
+                    setOpen(false)
                 }}
             />
         </>
