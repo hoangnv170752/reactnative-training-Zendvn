@@ -14,6 +14,7 @@ import Home from './screens/app/Home';
 import AddTask from './screens/app/AddTask';
 import Tasks from './screens/app/Tasks';
 import DrawerContent from './components/DrawerContent';
+import Weather from './screens/auth/Weather/Weather';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -46,6 +47,11 @@ const Routes = () => {
           <Image source={focused ? require('./assets/calendar_active.png') : require('./assets/calendar_inactive.png')} style={styles.icon}/>
         )}}
       />
+      {/* <Tab.Screen name="Weather" component={Weather} 
+        options={{tabBarIcon: ({focused}) => (
+          <Image source={focused ? require('./assets/calendar_active.png') : require('./assets/calendar_inactive.png')} style={styles.icon}/>
+        )}}
+      /> */}
     </Tab.Navigator>
   );
   if (user) {
@@ -58,6 +64,7 @@ const Routes = () => {
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />} screenOptions={{headerShown: false}}>
         <Drawer.Screen name="Tabs" component={Tabs} />
         <Drawer.Screen name="AddTask" component={AddTask} />
+        <Drawer.Screen name="Weather" component={Weather} />
       </Drawer.Navigator> 
     );
   }
@@ -66,6 +73,7 @@ const Routes = () => {
         <Stack.Screen name="Onboarding" component={Onboarding } />
         <Stack.Screen name="Signup" component={Signup } />
         <Stack.Screen name="Signin" component={Signin } />
+        <Stack.Screen name="Weather" component={Weather } />
       </Stack.Navigator>
   );
 }

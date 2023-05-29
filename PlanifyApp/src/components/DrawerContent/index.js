@@ -24,6 +24,7 @@ function DrawerContent(props) {
         <DrawerContentScrollView {...props}>
             <Text style={styles.link} onPress={() => navigation.navigate('Home')}>Home 🏠</Text>
             <Text style={styles.link} onPress={() => navigation.navigate('Tasks')}>Tasks ✔️</Text>
+            <Text style={styles.link} onPress={() => navigation.navigate('Weather')}>Weather ✔️</Text>
             <Text style={styles.link}>Private Chats (stay tuned) 💬</Text>
             <Text style={styles.link} onPress={() => Linking.openURL(TERMS_CONDITIONS_LINK)}>Privacy Policy 🧻</Text>
             <Text style={styles.link} onPress={() => Linking.openURL(PRIVACY_POLICY_LINK)}>Terms & Conditions 🧻</Text>
